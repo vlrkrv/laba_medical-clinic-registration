@@ -122,7 +122,13 @@ nameInput.addEventListener('input', validateName);
 emailInput.addEventListener('input', validateEmail);
 phoneInput.addEventListener('input', validatePhone);
 birthdateInput.addEventListener('change', validateBirthdate);
-passwordInput.addEventListener('input', validatePassword);
+passwordInput.addEventListener('input', function() {
+    validatePassword();
+    // Якщо користувач вже щось вводив у підтвердження, перевіряємо його знову
+    if (confirmInput.value !== '') {
+        validateConfirm();
+    }
+});
 confirmInput.addEventListener('input', validateConfirm);
 
 form.addEventListener('submit', function(e) {
